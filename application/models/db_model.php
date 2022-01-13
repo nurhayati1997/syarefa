@@ -6,6 +6,11 @@ class Db_model extends CI_Model
         return $this->db->get($tabel);
     }
 
+    public function get($tabel)
+    {
+        return $this->db->get($tabel);
+    }
+
 
     public function insert($tabel, $data)
     {

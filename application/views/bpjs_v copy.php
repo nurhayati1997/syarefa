@@ -53,15 +53,15 @@ https://templatemo.com/tm-569-edu-meeting
                 </div>
               </div>
               <div class="col-lg-12">
-                    <div class="count-area-content" >
+                    <div class="count-area-content" id="ambil_resep">
                       <div class="count-title">No Antrian</div>
-                      <div class="count-digit" ><?php echo $ambil_antrian; ?></div>
+                      <div class="count-digit">94</div>
                       <div class="count-title">Segera mengambil Resep</div>
                     </div>
               </div>
               <div class="col-lg-3">
                     <div class="count-area-content">
-                      <div class="count-digit"><?php echo $total_antrian; ?></div>
+                      <div class="count-digit">100</div>
                       <div class="count-title">Total Antrian</div>
                     </div>
               </div>
@@ -181,7 +181,32 @@ https://templatemo.com/tm-569-edu-meeting
   </section>
 
   <!-- Scripts -->
-]
+
+  <script>
+  tampilkan();
+
+  function tampilkan(){
+    $("#tempatTabel").html('<i class="fas fa-spinner fa-pulse"></i> Memuat...')
+    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>NO</th><th>No Antrian</th><th>No RM</th><th>Nama</th><th>Poli</th><th>Jenis Pasien</th><th>Status</th><th>Action</th></tr></thead><tbody>'
+      $.ajax({
+        type:'POST',
+        url: '<?= base_url() ?>operator/tampil_ambiresep',
+        dataType :'json',
+        success: function(data){
+          // console.log(data);
+          for (let i = 0; i < data.length; i++) {
+            baris += '<td>' + data[i].status + '</td>'
+          }
+          baris += '</tbody></table>'
+          $("#tempatTabel").html(baris);
+          $('#tabelUser').DataTable({
+            "pageLength": 10,
+          });
+        }
+      });
+  }
+
+</script>
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
