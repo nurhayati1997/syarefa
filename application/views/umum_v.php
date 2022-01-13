@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
+
+    <link rel="icon" href="<?= base_url() ?>assets/new.png" type="image/png">
 <!--
 
 TemplateMo 569 Edu Meeting
@@ -47,33 +49,33 @@ https://templatemo.com/tm-569-edu-meeting
             <div class="row">
               <div class="col-lg-12">
                 <div class="section-heading">
-                  <h3 class="text-center text-white" >Welcome to SYAREFA
-                  <br> "SYamrabu Antrian REsep FArmasi"
+                  <h3 class="text-center text-white" > Antrian Pasien UMUM
+                  <br>Welcome to SYAREFA "SYamrabu Antrian REsep FArmasi"
                   </h3>
                 </div>
               </div>
               <div class="col-lg-12">
-                    <div class="count-area-content" id="ambil_resep">
+                    <div class="count-area-content" >
                       <div class="count-title">No Antrian</div>
-                      <div class="count-digit">94</div>
+                      <div class="count-digit" ><?php echo $ambil_antrian; ?></div>
                       <div class="count-title">Segera mengambil Resep</div>
                     </div>
               </div>
               <div class="col-lg-3">
                     <div class="count-area-content">
-                      <div class="count-digit">100</div>
+                      <div class="count-digit"><?php echo $total_antrian; ?></div>
                       <div class="count-title">Total Antrian</div>
                     </div>
               </div>
               <div class="col-lg-6">
                     <div class="count-area-content">
-                      <div class="count-digit">1</div>
+                      <div class="count-digit"><?php echo $sedang_dikerjakan; ?></div>
                       <div class="count-title">No Resep Yg dikerjakan</div>
                     </div>
               </div>
               <div class="col-lg-3">
                     <div class="count-area-content">
-                      <div class="count-digit">6</div>
+                      <div class="count-digit"><?php echo $sisa_resep ?></div>
                       <div class="count-title">Sisa Antrian</div>
                     </div>
               </div>
@@ -114,20 +116,20 @@ https://templatemo.com/tm-569-edu-meeting
           
             <div class="item">
               <div class="down-content">
-                <p>Suspendisse tempor</p>
-                <h4>Best Education</h4>
+                <p>Selamat Datang</p>
+                <h4>di RSUD SYAMRABU</h4>
               </div>
             </div>
             <div class="item">
               <div class="down-content">
-                <p>Suspendisse tempor</p>
-                <h4>Best Education</h4>
+                <p>Semoga Cepat Sembuh</p>
+                <h4>FARMASI RSUD SYAMRABU</h4>
               </div>
             </div>
             <div class="item">
               <div class="down-content">
-                <p>Suspendisse tempor</p>
-                <h4>Best Education</h4>
+                <p>Layanan Pengaduan</p>
+                <h4>0812-8815-1616</h4>
               </div>
             </div>
             
@@ -143,23 +145,23 @@ https://templatemo.com/tm-569-edu-meeting
         <div class="col-lg-4">
         </div>
         <div class="col-lg-4">
-          <div class="right-info">
+          <div class="text-center right-info">
             <ul>
               <li>
-                <h6>Phone Number</h6>
+                <h6>Layanan Informasi</h6>
                 <span>010-020-0340</span>
               </li>
               <li>
-                <h6>Email Address</h6>
-                <span>info@meeting.edu</span>
+                <h6>Email</h6>
+                <span>eres_bangkalan@yahoo.com</span>
               </li>
               <li>
-                <h6>Street Address</h6>
-                <span>Rio de Janeiro - RJ, 22795-008, Brazil</span>
+                <h6>Alamat</h6>
+                <span>Jl. Pemuda Kaffa No.9, Junok, Pejagan, Kec. Bangkalan, Kabupaten Bangkalan, Jawa Timur 69112</span>
               </li>
               <li>
                 <h6>Website URL</h6>
-                <span>www.meeting.edu</span>
+                <span>http://rsabkl.ddns.net/</span>
               </li>
             </ul>
           </div>
@@ -169,7 +171,7 @@ https://templatemo.com/tm-569-edu-meeting
       </div>
     </div>
     <div class="footer">
-      <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved. 
+      <p>Creat by © TIM IT | RSUD SYAMRABU BANGKALAN. 
           <br>
           Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
           <br>
@@ -181,32 +183,7 @@ https://templatemo.com/tm-569-edu-meeting
   </section>
 
   <!-- Scripts -->
-
-  <script>
-  tampilkan();
-
-  function tampilkan(){
-    $("#tempatTabel").html('<i class="fas fa-spinner fa-pulse"></i> Memuat...')
-    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>NO</th><th>No Antrian</th><th>No RM</th><th>Nama</th><th>Poli</th><th>Jenis Pasien</th><th>Status</th><th>Action</th></tr></thead><tbody>'
-      $.ajax({
-        type:'POST',
-        url: '<?= base_url() ?>operator/tampil_ambiresep',
-        dataType :'json',
-        success: function(data){
-          // console.log(data);
-          for (let i = 0; i < data.length; i++) {
-            baris += '<td>' + data[i].status + '</td>'
-          }
-          baris += '</tbody></table>'
-          $("#tempatTabel").html(baris);
-          $('#tabelUser').DataTable({
-            "pageLength": 10,
-          });
-        }
-      });
-  }
-
-</script>
+]
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

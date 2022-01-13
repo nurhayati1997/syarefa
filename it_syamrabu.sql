@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2022 at 04:57 PM
+-- Generation Time: Jan 13, 2022 at 06:08 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -74,7 +74,10 @@ INSERT INTO `syarefa` (`id`, `no_rm`, `nama`, `no_antrian`, `jenis_pasien`, `pol
 (1, '1.AVIr0.1', 'inas', '092123', 1, 0, 0, '2021-02-23'),
 (2, '2.v1KQP.1', 'mirna', '123123', 1, 1, 1, '2021-02-23'),
 (3, '3.PNwmc.1', 'yati', '4656', 1, 0, 2, '2021-03-25'),
-(4, '765', 'mimi', '1', 1, 1, 0, '2022-01-13');
+(4, '765', 'mimi', '1', 1, 1, 0, '2022-01-13'),
+(5, '1236', 'yuni', '654', 2, 2, 0, '2022-01-13'),
+(6, '123', 'ita', '87', 2, 2, 1, '2022-01-13'),
+(7, '543', 'yoi', '57', 2, 3, 2, '2022-01-13');
 
 -- --------------------------------------------------------
 
@@ -90,12 +93,37 @@ CREATE TABLE `v_ambilantrian` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `v_ambilantrian_umum`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_ambilantrian_umum` (
+`no_antrian` varchar(13)
+,`status` int(11)
+,`jenis_pasien` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `v_sedangdikerjakan`
 -- (See below for the actual view)
 --
 CREATE TABLE `v_sedangdikerjakan` (
 `no_antrian` varchar(13)
 ,`status` int(11)
+,`jenis_pasien` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_sedangdikerjakan_umum`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_sedangdikerjakan_umum` (
+`no_antrian` varchar(13)
+,`status` int(11)
+,`jenis_pasien` int(11)
 );
 
 -- --------------------------------------------------------
@@ -107,6 +135,41 @@ CREATE TABLE `v_sedangdikerjakan` (
 CREATE TABLE `v_sisaresep` (
 `no_antrian` varchar(13)
 ,`status` int(11)
+,`jenis_pasien` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_sisaresep_umum`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_sisaresep_umum` (
+`no_antrian` varchar(13)
+,`status` int(11)
+,`jenis_pasien` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_total_bpjs`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_total_bpjs` (
+`no_antrian` varchar(13)
+,`jenis_pasien` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_total_umum`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_total_umum` (
+`no_antrian` varchar(13)
+,`jenis_pasien` int(11)
 );
 
 -- --------------------------------------------------------
@@ -121,11 +184,29 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `v_ambilantrian_umum`
+--
+DROP TABLE IF EXISTS `v_ambilantrian_umum`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_ambilantrian_umum`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`status` AS `status`, `syarefa`.`jenis_pasien` AS `jenis_pasien` FROM `syarefa` WHERE `syarefa`.`status` = '2' AND `syarefa`.`jenis_pasien` = '2' ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `v_sedangdikerjakan`
 --
 DROP TABLE IF EXISTS `v_sedangdikerjakan`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sedangdikerjakan`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`status` AS `status` FROM `syarefa` WHERE `syarefa`.`status` = '1' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sedangdikerjakan`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`status` AS `status`, `syarefa`.`jenis_pasien` AS `jenis_pasien` FROM `syarefa` WHERE `syarefa`.`status` = '1' AND `syarefa`.`jenis_pasien` = '1' ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_sedangdikerjakan_umum`
+--
+DROP TABLE IF EXISTS `v_sedangdikerjakan_umum`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sedangdikerjakan_umum`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`status` AS `status`, `syarefa`.`jenis_pasien` AS `jenis_pasien` FROM `syarefa` WHERE `syarefa`.`status` = '1' AND `syarefa`.`jenis_pasien` = '2' ;
 
 -- --------------------------------------------------------
 
@@ -134,7 +215,34 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_sisaresep`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sisaresep`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`status` AS `status` FROM `syarefa` WHERE `syarefa`.`status` = '0' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sisaresep`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`status` AS `status`, `syarefa`.`jenis_pasien` AS `jenis_pasien` FROM `syarefa` WHERE `syarefa`.`status` = '0' AND `syarefa`.`jenis_pasien` = '1' ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_sisaresep_umum`
+--
+DROP TABLE IF EXISTS `v_sisaresep_umum`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sisaresep_umum`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`status` AS `status`, `syarefa`.`jenis_pasien` AS `jenis_pasien` FROM `syarefa` WHERE `syarefa`.`status` = '0' AND `syarefa`.`jenis_pasien` = '2' ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_total_bpjs`
+--
+DROP TABLE IF EXISTS `v_total_bpjs`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_total_bpjs`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`jenis_pasien` AS `jenis_pasien` FROM `syarefa` WHERE `syarefa`.`jenis_pasien` = '1' ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_total_umum`
+--
+DROP TABLE IF EXISTS `v_total_umum`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_total_umum`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`jenis_pasien` AS `jenis_pasien` FROM `syarefa` WHERE `syarefa`.`jenis_pasien` = '2' ;
 
 --
 -- Indexes for dumped tables
@@ -160,7 +268,7 @@ ALTER TABLE `syarefa`
 -- AUTO_INCREMENT for table `syarefa`
 --
 ALTER TABLE `syarefa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

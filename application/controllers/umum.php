@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class bpjs extends CI_Controller
+class umum extends CI_Controller
 {
 
 	function __construct()
@@ -24,7 +24,7 @@ class bpjs extends CI_Controller
 		// $this->db->limit('1');
 		$this->db->where('status',2);
 		$this->db->order_by('no_antrian','DESC');
-		$antrian = $this->db->get('v_ambilantrian')->row();
+		$antrian = $this->db->get('v_ambilantrian_umum')->row();
 		if($antrian){
 			$data['ambil_antrian'] = $antrian->no_antrian;
 
@@ -32,20 +32,20 @@ class bpjs extends CI_Controller
 			$data['ambil_antrian'] = 0;
 		}
 
-		$data["total_antrian"] = $this->db_model->get("v_total_bpjs")->num_rows();
+		$data["total_antrian"] = $this->db_model->get("v_total_umum")->num_rows();
 
 		$this->db->where('status',1);
 		$this->db->order_by('no_antrian','DESC');
-		$antrian = $this->db->get('v_sedangdikerjakan')->row();
+		$antrian = $this->db->get('v_sedangdikerjakan_umum')->row();
 		if($antrian){
 			$data['sedang_dikerjakan'] = $antrian->no_antrian;
 
 		}else{
 			$data['sedang_dikerjakan'] = 0;
 		}
-		$data["sisa_resep"] = $this->db_model->get("v_sisaresep")->num_rows();
+		$data["sisa_resep"] = $this->db_model->get("v_sisaresep_umum")->num_rows();
 		// $data["ambil_antrian"] = $this->db_model->get_where("syarefa", ["status" => 2])->result();
-		$this->load->view('bpjs_v', $data);
+		$this->load->view('umum_v', $data);
 	}	
 	
 	public function tampil_ambiresep()
