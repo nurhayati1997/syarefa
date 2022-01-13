@@ -139,7 +139,8 @@
                                     <option disabled selected>-Status Pelayanan Pasien-</option>
                                     <option value="0">Belum Dilayani</option>
                                     <option value="1">Sedang dilayani</option>
-                                    <option value="2">Sudah dilayani</option>
+                                    <option value="2">ambil resep</option>
+                                    <option value="3">Selesai dilayani</option>
                                   </select>
                                 </div>
                                 <div class="badge badge-danger" id="pesanErrorEdit"></div>
