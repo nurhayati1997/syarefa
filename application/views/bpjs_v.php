@@ -67,13 +67,13 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
               <div class="col-lg-6">
                     <div class="count-area-content">
-                      <div class="count-digit">1</div>
+                      <div class="count-digit"><?php echo $sedang_dikerjakan; ?></div>
                       <div class="count-title">No Resep Yg dikerjakan</div>
                     </div>
               </div>
               <div class="col-lg-3">
                     <div class="count-area-content">
-                      <div class="count-digit">6</div>
+                      <div class="count-digit"><?php echo $sisa_resep ?></div>
                       <div class="count-title">Sisa Antrian</div>
                     </div>
               </div>

@@ -24,14 +24,26 @@ class bpjs extends CI_Controller
 		// $this->db->limit('1');
 		$this->db->where('status',2);
 		$this->db->order_by('no_antrian','DESC');
-		$antrian = $this->db->get('syarefa')->row();
+		$antrian = $this->db->get('v_ambilantrian')->row();
 		if($antrian){
 			$data['ambil_antrian'] = $antrian->no_antrian;
 
 		}else{
 			$data['ambil_antrian'] = 0;
 		}
-		$data["total_antrian"] = $this->db_model->get("v_totalantrian")->num_rows();
+
+		$data["total_antrian"] = $this->db_model->get("syarefa")->num_rows();
+
+		$this->db->where('status',1);
+		$this->db->order_by('no_antrian','DESC');
+		$antrian = $this->db->get('v_sedangdikerjakan')->row();
+		if($antrian){
+			$data['sedang_dikerjakan'] = $antrian->no_antrian;
+
+		}else{
+			$data['sedang_dikerjakan'] = 0;
+		}
+		$data["sisa_resep"] = $this->db_model->get("v_sisaresep")->num_rows();
 		// $data["ambil_antrian"] = $this->db_model->get_where("syarefa", ["status" => 2])->result();
 		$this->load->view('bpjs_v', $data);
 	}	
