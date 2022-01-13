@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2022 at 09:14 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Jan 13, 2022 at 04:57 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -72,8 +72,69 @@ CREATE TABLE `syarefa` (
 
 INSERT INTO `syarefa` (`id`, `no_rm`, `nama`, `no_antrian`, `jenis_pasien`, `poli`, `status`, `tgl_input`) VALUES
 (1, '1.AVIr0.1', 'inas', '092123', 1, 0, 0, '2021-02-23'),
-(2, '2.v1KQP.1', 'mirna', '123123', 1, 1, 0, '2021-02-23'),
-(3, '3.PNwmc.1', 'yati', '4656', 1, 0, 0, '2021-03-25');
+(2, '2.v1KQP.1', 'mirna', '123123', 1, 1, 1, '2021-02-23'),
+(3, '3.PNwmc.1', 'yati', '4656', 1, 0, 2, '2021-03-25'),
+(4, '765', 'mimi', '1', 1, 1, 0, '2022-01-13');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_ambilantrian`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_ambilantrian` (
+`no_antrian` varchar(13)
+,`status` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_sedangdikerjakan`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_sedangdikerjakan` (
+`no_antrian` varchar(13)
+,`status` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_sisaresep`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_sisaresep` (
+`no_antrian` varchar(13)
+,`status` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_ambilantrian`
+--
+DROP TABLE IF EXISTS `v_ambilantrian`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_ambilantrian`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`status` AS `status` FROM `syarefa` WHERE `syarefa`.`status` = '2' ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_sedangdikerjakan`
+--
+DROP TABLE IF EXISTS `v_sedangdikerjakan`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sedangdikerjakan`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`status` AS `status` FROM `syarefa` WHERE `syarefa`.`status` = '1' ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_sisaresep`
+--
+DROP TABLE IF EXISTS `v_sisaresep`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sisaresep`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`status` AS `status` FROM `syarefa` WHERE `syarefa`.`status` = '0' ;
 
 --
 -- Indexes for dumped tables
@@ -99,7 +160,7 @@ ALTER TABLE `syarefa`
 -- AUTO_INCREMENT for table `syarefa`
 --
 ALTER TABLE `syarefa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
