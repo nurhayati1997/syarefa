@@ -40,7 +40,7 @@
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Favicon -->
-  <link rel="icon" href="<?= base_url() ?>assets_admin/img/brand/logo.ico" type="image/png">
+  <link rel="icon" href="<?= base_url() ?>assets/new.png" type="image/png">
 
   <!-- Icons -->
   <link rel="stylesheet" href="<?= base_url() ?>assets_admin/vendor/nucleo/css/nucleo.css" type="text/css">
@@ -98,7 +98,7 @@
       <!-- Brand -->
       <div class="sidenav-header  d-flex  align-items-center">
         <a class="navbar-brand">
-          <img src="<?= base_url() ?>assets_admin/img/brand/main_logo.png" class="navbar-brand-img" alt="...">
+          <img src="<?= base_url() ?>assets_admin/logo.png" class="navbar-brand-img" alt="...">
         </a>
         <div class=" ml-auto ">
           <!-- Sidenav toggler -->
@@ -119,7 +119,7 @@
             <li class="nav-item">
               <a class="nav-link" href="<?= site_url('operator') ?>">
                 <i class="ni ni-tv-2 text-primary"></i>
-                <span class="nav-link-text">Dashboard</span>
+                <span class="nav-link-text">Operator</span>
               </a>
             </li>
           </ul>
@@ -182,13 +182,13 @@
       <div class="row align-items-center justify-content-lg-between">
         <div class="col-lg-6">
           <div class="copyright text-center  text-lg-left  text-muted">
-            &copy; 2020 <a href="https://www.creative-tim.com/" class="font-weight-bold ml-1" target="_blank">Aulia Husada</a>
+            &copy; 2020 <a class="font-weight-bold ml-1" target="_blank">TIM IT</a>
           </div>
         </div>
         <div class="col-lg-6">
           <ul class="nav nav-footer justify-content-center justify-content-lg-end">
             <li class="nav-item">
-              <a href="https://www.creative-tim.com/" class="nav-link" target="_blank">FIND TECH</a>
+              <a href="#" class="nav-link" target="_blank">RSUD SYAMRABU BANGKALAN</a>
           </ul>
         </div>
       </div>

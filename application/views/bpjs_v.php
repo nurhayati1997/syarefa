@@ -49,8 +49,8 @@ https://templatemo.com/tm-569-edu-meeting
             <div class="row">
               <div class="col-lg-12">
                 <div class="section-heading">
-                  <h3 class="text-center text-white" >Welcome to SYAREFA
-                  <br> "SYamrabu Antrian REsep FArmasi"
+                  <h3 class="text-center text-white" > Antrian Pasien BPJS
+                  <br>Welcome to SYAREFA "SYamrabu Antrian REsep FArmasi"
                   </h3>
                 </div>
               </div>
