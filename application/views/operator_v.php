@@ -30,7 +30,25 @@
       <div class="col">
         <div class="card">
           <div class="card-header bg-gradient-success">
-            <div class="pt-4 text-center">
+            <div class="row">
+              <div class="col-xl-4">
+              </div>
+              <div class="col-xl-4 ">
+                <div class="card card-stats">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col lg-4">
+                        <h5 class="card-title text-uppercase text-muted text-center mb-0">Total Resep</h5>
+                        <span class="text-center h2 font-weight-bold  mb-0">  Hari Ini : <?php echo $total_today; ?></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 ">
+              </div>
+            </div>
+            <div class="pt-4 text-center">    
               <h4 class="text-uppercase ls-1 text-white py-3 mb-0">Data Antrian</h4>
               <div class="row">
                 <div class="col-md-4">
@@ -84,29 +102,38 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                  <select class="form-control" name="poli" id="poli">
-                                    <option value="0" disabled selected>-Pilih Poli-</option>
-                                    <option value="1">Jantung & Pembuluh Darah</option>
+                                  <div class="input-group input-group-merge input-group-alternative">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                                    </div>
+                                    <input class="form-control" name="poli" id="poli" placeholder="Poli" type="text">
+                                  </div>
+                                </div>
+<!-- 
+                                <div class="form-group mb-3">
+                                  <select class="form-control" id="exampleFormControlSelect1" name="poli" id="poli">
+                                    <option >-Pilih Poli-</option>
+                                    <option value="jantung">Jantung & Pembuluh Darah</option>
                                     <option value="2">Orthopedi</option>
                                     <option value="3">Geriatri</option>
                                   </select>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group mb-3">
-                                  <select class="form-control" name="jenis_pasien" id="jenis_pasien">
-                                    <option value="0" disabled selected>-Pilih Jenis Pasien-</option>
+                                <label class="form-control-label" for="exampleFormControlSelect1">Jenis Pembayaran Pasien</label>
+                                  <select class="form-control"  name="jenis_pasien" id="jenis_pasien">
                                     <option value="1">BPJS</option>
                                     <option value="2">UMUM</option>
                                   </select>
                                 </div>
 
                                 <div class="form-group mb-3">
+                                <label class="form-control-label" for="exampleFormControlSelect1">Status Layanan Pasien</label>
                                   <select class="form-control" name="status" id="status">
-                                    <option disabled selected>-Status Pelayanan Pasien-</option>
-                                    <option value="0">Belum Dilayani</option>
-                                    <option value="1">Sedang dilayani</option>
-                                    <option value="2">ambil resep</option>
-                                    <option value="3">Selesai dilayani</option>
+                                    <option value="1">Belum Dilayani</option>
+                                    <option value="2">Sedang dilayani</option>
+                                    <option value="3">ambil resep</option>
+                                    <option value="4">Selesai dilayani</option>
                                   </select>
                                 </div>
                                 <div class="badge badge-danger" id="pesanErrorTambah"></div>
@@ -136,12 +163,12 @@
                               <form role="form">
                                 <div class="form-group mb-3">
                                   <input id="idUser" type="hidden">
+                                  <label class="form-control-label" for="exampleFormControlSelect1">Status Layanan Pasien</label>
                                   <select class="form-control" id="editStatus">
-                                    <option disabled selected>-Status Pelayanan Pasien-</option>
-                                    <option value="0">Belum Dilayani</option>
-                                    <option value="1">Sedang dilayani</option>
-                                    <option value="2">ambil resep</option>
-                                    <option value="3">Selesai dilayani</option>
+                                    <option value="1">Belum Dilayani</option>
+                                    <option value="2">Sedang dilayani</option>
+                                    <option value="3">ambil resep</option>
+                                    <option value="4">Selesai dilayani</option>
                                   </select>
                                 </div>
                                 <div class="badge badge-danger" id="pesanErrorEdit"></div>
@@ -204,7 +231,7 @@
 
   function tampilkan(){
     $("#tempatTabel").html('<i class="fas fa-spinner fa-pulse"></i> Memuat...')
-    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>NO</th><th>No Antrian</th><th>No RM</th><th>Nama</th><th>Poli</th><th>Jenis Pasien</th><th>Status</th><th>Action</th></tr></thead><tbody>'
+    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>NO</th><th>Tanggal</th><th>No Antrian</th><th>No RM</th><th>Nama</th><th>Poli</th><th>Jenis Pasien</th><th>Status</th><th>Action</th></tr></thead><tbody>'
       $.ajax({
         type:'POST',
         url: '<?= base_url() ?>operator/tampil',
@@ -214,6 +241,7 @@
           for (let i = 0; i < data.length; i++) {
             baris += '<tr>'
             baris += '<td>' + (i + 1) + '</td>'
+            baris += '<td>' + data[i].tgl_input + '</td>'
             baris += '<td>' + data[i].no_antrian + '</td>'
             baris += '<td>' + data[i].no_rm + '</td>'
             baris += '<td>' + data[i].nama + '</td>'

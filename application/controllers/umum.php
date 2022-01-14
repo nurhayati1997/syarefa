@@ -22,7 +22,7 @@ class umum extends CI_Controller
 		$nowDate = date('Y-m-d');
 
 		// $this->db->limit('1');
-		$this->db->where('status',2);
+		$this->db->where('status',3);
 		$this->db->order_by('no_antrian','DESC');
 		$antrian = $this->db->get('v_ambilantrian_umum')->row();
 		if($antrian){
@@ -34,9 +34,9 @@ class umum extends CI_Controller
 
 		$data["total_antrian"] = $this->db_model->get("v_total_umum")->num_rows();
 
-		$this->db->where('status',1);
+		$this->db->where('status',2);
 		$this->db->order_by('no_antrian','DESC');
-		$antrian = $this->db->get('v_sedangdikerjakan_umum')->row();
+		$antrian = $this->db->get('v_sedangdikerjan_umum')->row();
 		if($antrian){
 			$data['sedang_dikerjakan'] = $antrian->no_antrian;
 

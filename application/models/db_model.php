@@ -3,8 +3,15 @@ class Db_model extends CI_Model
 {
     public function ambil_data($tabel)
     {
-        return $this->db->get($tabel);
+        $date= date('Y-m-d');
+        return $this->db->get_where($tabel, array ('tgl_input'=> $date));
     }
+    
+    // public function ambil_data($tabel)
+    // {
+    //     return $this->db->get($tabel);
+    // }
+    
 
     public function get($tabel)
     {

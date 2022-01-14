@@ -172,7 +172,6 @@ https://templatemo.com/tm-569-edu-meeting
     </div>
     <div class="footer">
       <p>Creat by © TIM IT | RSUD SYAMRABU BANGKALAN.  </p>
-        <a class="btn btn-dark" href="<?= base_url('login')?>" role="button">Operator</a>
     </div>
   </section>
 

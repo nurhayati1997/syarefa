@@ -19,12 +19,12 @@ class bpjs extends CI_Controller
 		//get_tbl_pasien('v_riwayat_diagnosa', 'nama', $newformat, $this->input->post('dokter', TRUE), $this->input->post('kec', TRUE), $this->input->post('diagnosa', TRUE))->result());
 		// $data["ambil_antrian"] = $this->db_model->get_where('v_ambilantrian', ['no_antrian' =>'no_antrian'])->result();
 		// $data = $this->db->get('antrian')->row();
-		$nowDate = date('Y-m-d');
+		// $nowDate = date('Y-m-d');
 
 		// $this->db->limit('1');
-		$this->db->where('status',2);
+		$this->db->where('status',3);
 		$this->db->order_by('no_antrian','DESC');
-		$antrian = $this->db->get('v_ambilantrian')->row();
+		$antrian = $this->db->get('v_ambilantrian_bpjs')->row();
 		if($antrian){
 			$data['ambil_antrian'] = $antrian->no_antrian;
 
@@ -34,24 +34,24 @@ class bpjs extends CI_Controller
 
 		$data["total_antrian"] = $this->db_model->get("v_total_bpjs")->num_rows();
 
-		$this->db->where('status',1);
+		$this->db->where('status',2);
 		$this->db->order_by('no_antrian','DESC');
-		$antrian = $this->db->get('v_sedangdikerjakan')->row();
+		$antrian = $this->db->get('v_sedangdikerjan_bpjs')->row();
 		if($antrian){
 			$data['sedang_dikerjakan'] = $antrian->no_antrian;
 
 		}else{
 			$data['sedang_dikerjakan'] = 0;
 		}
-		$data["sisa_resep"] = $this->db_model->get("v_sisaresep")->num_rows();
+		$data["sisa_resep"] = $this->db_model->get("v_sisaresep_bpjs")->num_rows();
 		// $data["ambil_antrian"] = $this->db_model->get_where("syarefa", ["status" => 2])->result();
 		$this->load->view('bpjs_v', $data);
 	}	
 	
 	public function tampil_ambiresep()
 	{
-		// $data_antrian = $this->db_model->ambil_data('syarefa')->result();
-		// echo json_encode($data_antrian);
+		$data_antrian = $this->db_model->ambil_data('syarefa')->result();
+		echo json_encode($data_antrian);
 		// echo json_encode($this->db_model->get_where("syarefa", ["status" => 3])->result());
 	}
 

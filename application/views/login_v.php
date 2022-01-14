@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-	<title>Aulia Husada</title>
+	<title>SYAREFA</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="<?= base_url() ?>assets_login/images/icons/logo.ico" />
+	
+	<link rel="icon" href="<?= base_url() ?>assets/new.png" type="image/png">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets_login/vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->

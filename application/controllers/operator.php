@@ -17,15 +17,27 @@ class operator extends CI_Controller
 	public function index()
 	{
 		// $this->load->view('dashboard_v');
-		$this->template->load('template', 'operator_v');
+		//$this->load->view('umum_v', $data);
+		$data["total_today"] = $this->db_model->get("v_today")->num_rows();
+		$this->template->load('template', 'operator_v', $data);
 	}	
 	
 	public function tampil()
 	{
 		$data_antrian = $this->db_model->ambil_data('syarefa')->result();
 		echo json_encode($data_antrian);
-		// echo json_encode($this->db_model->get_where("tbl_user", ["status" => 0])->result());
+		// $data_antrian = $this->db_model->ambil_data('syarefa', ["status" => $nowDate])->result();
+		// echo json_encode($data_antrian);
+		// echo json_encode($this->db_model->get_where("syarefa", ["status" => $nowDate])->result());
 	}
+	// public function tampil()
+	// {
+	// 	$date= date('Y-m-d');
+	// 	$this->db->get_where($table, array ('tgl_input'=> $date));
+	// 	$data_antrian = $this->db_model->ambil_data('syarefa')->result();
+	// 	echo json_encode($data_antrian);
+	// 	// echo json_encode($this->db_model->get_where("syarefa", ["status" => $nowDate])->result());
+	// }
 
 	public function tambah_data()
 	{
