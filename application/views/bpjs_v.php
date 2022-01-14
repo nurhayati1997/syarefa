@@ -171,14 +171,8 @@ https://templatemo.com/tm-569-edu-meeting
       </div>
     </div>
     <div class="footer">
-      <p>Creat by © TIM IT | RSUD SYAMRABU BANGKALAN. 
-          <br>
-          Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
-          <br>
-          Distibuted By: <a href="https://themewagon.com" target="_blank" title="Build Better UI, Faster">ThemeWagon</a>
-        </p>
-        
-        <a class="btn btn-dark" href="<?= base_url('operator')?>" role="button">Operator</a>
+      <p>Creat by © TIM IT | RSUD SYAMRABU BANGKALAN.  </p>
+        <a class="btn btn-dark" href="<?= base_url('login')?>" role="button">Operator</a>
     </div>
   </section>
 
