@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2022 at 08:29 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Jan 16, 2022 at 09:46 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -82,7 +82,13 @@ INSERT INTO `syarefa` (`id`, `no_rm`, `nama`, `no_antrian`, `jenis_pasien`, `pol
 (16, '343', 'yatij', 12466, 1, 'an', 4, '2022-01-14'),
 (17, '343', 'yatihj', 12466, 2, 'hn', 1, '2022-01-14'),
 (18, '343', 'iya', 124890, 1, 'an', 1, '2022-01-14'),
-(19, '343', 'iu', 8774, 2, 'ki', 3, '2022-01-14');
+(19, '343', 'iu', 8774, 2, 'ki', 3, '2022-01-14'),
+(20, '76', 'yati', 101, 2, 'gigi', 5, '2022-01-16'),
+(21, '456', 'romi', 102, 2, 'anak', 5, '2022-01-16'),
+(22, '544', 'dedek', 103, 2, 'anak', 4, '2022-01-16'),
+(23, '976', 'opo', 104, 1, 'jantung', 2, '2022-01-16'),
+(24, '654', 'tutu', 105, 1, 'ortho', 3, '2022-01-16'),
+(25, '786', 'teri', 106, 1, 'jia', 1, '2022-01-16');
 
 -- --------------------------------------------------------
 
@@ -104,6 +110,34 @@ CREATE TABLE `v_ambilantrian_bpjs` (
 --
 CREATE TABLE `v_ambilantrian_umum` (
 `no_antrian` int(11)
+,`status` int(11)
+,`jenis_pasien` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_obatbelumdiambil_bpjs`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_obatbelumdiambil_bpjs` (
+`no_antrian` int(11)
+,`nama` varchar(50)
+,`poli` varchar(30)
+,`status` int(11)
+,`jenis_pasien` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_obatbelumdiambil_umum`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_obatbelumdiambil_umum` (
+`no_antrian` int(11)
+,`nama` varchar(50)
+,`poli` varchar(30)
 ,`status` int(11)
 ,`jenis_pasien` int(11)
 );
@@ -200,7 +234,7 @@ CREATE TABLE `v_total_umum` (
 --
 DROP TABLE IF EXISTS `v_ambilantrian_bpjs`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_ambilantrian_bpjs`  AS  select `v_today`.`no_antrian` AS `no_antrian`,`v_today`.`status` AS `status`,`v_today`.`jenis_pasien` AS `jenis_pasien` from `v_today` where `v_today`.`status` = '3' and `v_today`.`jenis_pasien` = '1' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_ambilantrian_bpjs`  AS SELECT `v_today`.`no_antrian` AS `no_antrian`, `v_today`.`status` AS `status`, `v_today`.`jenis_pasien` AS `jenis_pasien` FROM `v_today` WHERE `v_today`.`status` = '3' AND `v_today`.`jenis_pasien` = '1' ;
 
 -- --------------------------------------------------------
 
@@ -209,7 +243,25 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_ambilantrian_umum`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_ambilantrian_umum`  AS  select `v_today`.`no_antrian` AS `no_antrian`,`v_today`.`status` AS `status`,`v_today`.`jenis_pasien` AS `jenis_pasien` from `v_today` where `v_today`.`status` = '3' and `v_today`.`jenis_pasien` = '2' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_ambilantrian_umum`  AS SELECT `v_today`.`no_antrian` AS `no_antrian`, `v_today`.`status` AS `status`, `v_today`.`jenis_pasien` AS `jenis_pasien` FROM `v_today` WHERE `v_today`.`status` = '3' AND `v_today`.`jenis_pasien` = '2' ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_obatbelumdiambil_bpjs`
+--
+DROP TABLE IF EXISTS `v_obatbelumdiambil_bpjs`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_obatbelumdiambil_bpjs`  AS SELECT `v_today`.`no_antrian` AS `no_antrian`, `v_today`.`nama` AS `nama`, `v_today`.`poli` AS `poli`, `v_today`.`status` AS `status`, `v_today`.`jenis_pasien` AS `jenis_pasien` FROM `v_today` WHERE `v_today`.`status` = '5' AND `v_today`.`jenis_pasien` = '1' ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_obatbelumdiambil_umum`
+--
+DROP TABLE IF EXISTS `v_obatbelumdiambil_umum`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_obatbelumdiambil_umum`  AS SELECT `v_today`.`no_antrian` AS `no_antrian`, `v_today`.`nama` AS `nama`, `v_today`.`poli` AS `poli`, `v_today`.`status` AS `status`, `v_today`.`jenis_pasien` AS `jenis_pasien` FROM `v_today` WHERE `v_today`.`status` = '5' AND `v_today`.`jenis_pasien` = '2' ;
 
 -- --------------------------------------------------------
 
@@ -218,7 +270,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_sedangdikerjan_bpjs`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sedangdikerjan_bpjs`  AS  select `v_today`.`no_antrian` AS `no_antrian`,`v_today`.`status` AS `status`,`v_today`.`jenis_pasien` AS `jenis_pasien` from `v_today` where `v_today`.`status` = '2' and `v_today`.`jenis_pasien` = '1' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sedangdikerjan_bpjs`  AS SELECT `v_today`.`no_antrian` AS `no_antrian`, `v_today`.`status` AS `status`, `v_today`.`jenis_pasien` AS `jenis_pasien` FROM `v_today` WHERE `v_today`.`status` = '2' AND `v_today`.`jenis_pasien` = '1' ;
 
 -- --------------------------------------------------------
 
@@ -227,7 +279,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_sedangdikerjan_umum`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sedangdikerjan_umum`  AS  select `v_today`.`no_antrian` AS `no_antrian`,`v_today`.`status` AS `status`,`v_today`.`jenis_pasien` AS `jenis_pasien` from `v_today` where `v_today`.`status` = '2' and `v_today`.`jenis_pasien` = '2' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sedangdikerjan_umum`  AS SELECT `v_today`.`no_antrian` AS `no_antrian`, `v_today`.`status` AS `status`, `v_today`.`jenis_pasien` AS `jenis_pasien` FROM `v_today` WHERE `v_today`.`status` = '2' AND `v_today`.`jenis_pasien` = '2' ;
 
 -- --------------------------------------------------------
 
@@ -236,7 +288,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_sisaresep_bpjs`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sisaresep_bpjs`  AS  select `v_today`.`no_antrian` AS `no_antrian`,`v_today`.`status` AS `status`,`v_today`.`jenis_pasien` AS `jenis_pasien` from `v_today` where `v_today`.`status` = '1' and `v_today`.`jenis_pasien` = '1' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sisaresep_bpjs`  AS SELECT `v_today`.`no_antrian` AS `no_antrian`, `v_today`.`status` AS `status`, `v_today`.`jenis_pasien` AS `jenis_pasien` FROM `v_today` WHERE `v_today`.`status` = '1' AND `v_today`.`jenis_pasien` = '1' ;
 
 -- --------------------------------------------------------
 
@@ -245,7 +297,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_sisaresep_umum`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sisaresep_umum`  AS  select `v_today`.`no_antrian` AS `no_antrian`,`v_today`.`status` AS `status`,`v_today`.`jenis_pasien` AS `jenis_pasien` from `v_today` where `v_today`.`status` = '1' and `v_today`.`jenis_pasien` = '2' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_sisaresep_umum`  AS SELECT `v_today`.`no_antrian` AS `no_antrian`, `v_today`.`status` AS `status`, `v_today`.`jenis_pasien` AS `jenis_pasien` FROM `v_today` WHERE `v_today`.`status` = '1' AND `v_today`.`jenis_pasien` = '2' ;
 
 -- --------------------------------------------------------
 
@@ -254,7 +306,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_today`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_today`  AS  select `syarefa`.`no_antrian` AS `no_antrian`,`syarefa`.`no_rm` AS `no_rm`,`syarefa`.`nama` AS `nama`,`syarefa`.`poli` AS `poli`,`syarefa`.`jenis_pasien` AS `jenis_pasien`,`syarefa`.`status` AS `status` from `syarefa` where `syarefa`.`tgl_input` = curdate() ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_today`  AS SELECT `syarefa`.`no_antrian` AS `no_antrian`, `syarefa`.`no_rm` AS `no_rm`, `syarefa`.`nama` AS `nama`, `syarefa`.`poli` AS `poli`, `syarefa`.`jenis_pasien` AS `jenis_pasien`, `syarefa`.`status` AS `status` FROM `syarefa` WHERE `syarefa`.`tgl_input` = curdate() ;
 
 -- --------------------------------------------------------
 
@@ -263,7 +315,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_total_bpjs`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_total_bpjs`  AS  select `v_today`.`no_antrian` AS `no_antrian`,`v_today`.`jenis_pasien` AS `jenis_pasien` from `v_today` where `v_today`.`jenis_pasien` = '1' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_total_bpjs`  AS SELECT `v_today`.`no_antrian` AS `no_antrian`, `v_today`.`jenis_pasien` AS `jenis_pasien` FROM `v_today` WHERE `v_today`.`jenis_pasien` = '1' ;
 
 -- --------------------------------------------------------
 
@@ -272,7 +324,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_total_umum`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_total_umum`  AS  select `v_today`.`no_antrian` AS `no_antrian`,`v_today`.`jenis_pasien` AS `jenis_pasien` from `v_today` where `v_today`.`jenis_pasien` = '2' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_total_umum`  AS SELECT `v_today`.`no_antrian` AS `no_antrian`, `v_today`.`jenis_pasien` AS `jenis_pasien` FROM `v_today` WHERE `v_today`.`jenis_pasien` = '2' ;
 
 --
 -- Indexes for dumped tables
@@ -298,7 +350,7 @@ ALTER TABLE `syarefa`
 -- AUTO_INCREMENT for table `syarefa`
 --
 ALTER TABLE `syarefa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
