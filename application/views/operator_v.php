@@ -133,7 +133,8 @@
                                     <option value="1">Belum Dilayani</option>
                                     <option value="2">Sedang dilayani</option>
                                     <option value="3">ambil resep</option>
-                                    <option value="4">Selesai dilayani</option>
+                                    <option value="4">Selesai Sudah Ambil Obat</option>
+                                    <option value="5">Selesai Belum Ambil Obat</option>
                                   </select>
                                 </div>
                                 <div class="badge badge-danger" id="pesanErrorTambah"></div>
@@ -168,7 +169,8 @@
                                     <option value="1">Belum Dilayani</option>
                                     <option value="2">Sedang dilayani</option>
                                     <option value="3">ambil resep</option>
-                                    <option value="4">Selesai dilayani</option>
+                                    <option value="4">Selesai Sudah Ambil Obat</option>
+                                    <option value="5">Selesai Belum Ambil Obat</option>
                                   </select>
                                 </div>
                                 <div class="badge badge-danger" id="pesanErrorEdit"></div>
