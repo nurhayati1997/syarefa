@@ -12,6 +12,11 @@ class Db_model extends CI_Model
         return $this->db->get($tabel);
     }
     
+    public function all_data($tabel)
+    {
+        return $this->db->get($tabel);
+    }
+    
 
     public function get($tabel)
     {

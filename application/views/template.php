@@ -118,10 +118,17 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="<?= site_url('operator') ?>">
-                <i class="ni ni-tv-2 text-primary"></i>
+                <i class="ni ni-circle-08  text-primary"></i>
                 <span class="nav-link-text">Operator</span>
               </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= site_url('all_data') ?>">
+                  <i class="ni ni-tv-2 text-pink"></i>
+                  <span class="nav-link-text">All Data</span>
+                </a>
+              </li>
           </ul>
         </div>
       </div>
