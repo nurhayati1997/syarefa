@@ -43,10 +43,10 @@ class operator extends CI_Controller
 	{
 		$data = [
 			"no_antrian" => $this->input->post("no_antrian", TRUE),
-			"nama" => $this->input->post("nama", TRUE),
-			"poli" => $this->input->post("poli", TRUE),
-			"jenis_pasien" => $this->input->post("jenis_pasien", TRUE),
-			"status"=>$this->input->post("status", TRUE)
+			"status"=>$this->input->post("status", TRUE),
+			// "nama" => $this->input->post("nama", TRUE),
+			// "poli" => $this->input->post("poli", TRUE),
+			"jenis_pasien" => 1
 		];
 		$this->db_model->insert('syarefa', $data);
 		echo json_encode($data);

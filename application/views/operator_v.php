@@ -83,23 +83,23 @@
                                   </div>
                                 </div>
 
-                                <div class="form-group mb-3">
+                                <!-- <div class="form-group mb-3">
                                   <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="ni ni-badge"></i></span>
                                     </div>
                                     <input class="form-control" name="nama" id="nama" placeholder="Nama" type="text">
                                   </div>
-                                </div>
+                                </div> -->
 
-                                <div class="form-group mb-3">
+                                <!-- <div class="form-group mb-3">
                                   <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="ni ni-badge"></i></span>
                                     </div>
                                     <input class="form-control" name="poli" id="poli" placeholder="Poli" type="text">
                                   </div>
-                                </div>
+                                </div> -->
 <!-- 
                                 <div class="form-group mb-3">
                                   <select class="form-control" id="exampleFormControlSelect1" name="poli" id="poli">
@@ -110,19 +110,18 @@
                                   </select>
                                 </div> -->
 
-                                <div class="form-group mb-3">
+                                <!-- <div class="form-group mb-3">
                                 <label class="form-control-label" for="exampleFormControlSelect1">Jenis Pembayaran Pasien</label>
                                   <select class="form-control"  name="jenis_pasien" id="jenis_pasien">
                                     <option value="1">BPJS</option>
                                     <option value="2">UMUM</option>
                                   </select>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group mb-3">
                                 <label class="form-control-label" for="exampleFormControlSelect1">Status Layanan Pasien</label>
                                   <select class="form-control" name="status" id="status">
                                     <option value="3">ambil resep</option>
-                                    <option value="4">Selesai Sudah Ambil Obat</option>
                                     <option value="5">Selesai Belum Ambil Obat</option>
                                   </select>
                                 </div>
@@ -156,7 +155,6 @@
                                   <label class="form-control-label" for="exampleFormControlSelect1">Status Layanan Pasien</label>
                                   <select class="form-control" id="editStatus">
                                     <option value="3">ambil resep</option>
-                                    <option value="4">Selesai Sudah Ambil Obat</option>
                                     <option value="5">Selesai Belum Ambil Obat</option>
                                   </select>
                                 </div>
@@ -220,7 +218,7 @@
 
   function tampilkan(){
     $("#tempatTabel").html('<i class="fas fa-spinner fa-pulse"></i> Memuat...')
-    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>NO</th><th>Tanggal</th><th>No Antrian</th><th>Nama</th><th>Poli</th><th>Jenis Pasien</th><th>Status</th><th>Action</th></tr></thead><tbody>'
+    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>NO</th><th>Tanggal</th><th>No Antrian</th><th>Status</th><th>Action</th></tr></thead><tbody>'
       $.ajax({
         type:'POST',
         url: '<?= base_url() ?>operator/tampil',
@@ -232,9 +230,9 @@
             baris += '<td>' + (i + 1) + '</td>'
             baris += '<td>' + data[i].tgl_input + '</td>'
             baris += '<td>' + data[i].no_antrian + '</td>'
-            baris += '<td>' + data[i].nama + '</td>'
-            baris += '<td>' + data[i].poli + '</td>'
-            baris += '<td>' + data[i].jenis_pasien + '</td>'
+            // baris += '<td>' + data[i].nama + '</td>'
+            // baris += '<td>' + data[i].poli + '</td>'
+            // baris += '<td>' + data[i].jenis_pasien + '</td>'
             baris += '<td>' + data[i].status + '</td>'
             baris += '<td><div style="cursor:pointer;" title="hapus?" class="badge badge-danger" id="hapus' + data[i].id + '" onClick="tryHapus(' + data[i].id+ ')"><i class="fa fa-times"></i></div>'
             baris += ' <div style="cursor:pointer;" title="edit?" class="badge badge-info" id="edit' + data[i].id + '" onClick="tryEdit(' + data[i].id+ ')"><i class="fa fa-edit"></i></div>'
@@ -255,9 +253,9 @@
 
   function tryTambah() {
     $("#no_antrian").val("")
-    $("#nama").val("")
-    $("#poli").val("")
-    $("#jenis_pasien").val("")
+    // $("#nama").val("")
+    // $("#poli").val("")
+    // $("#jenis_pasien").val("")
     $("#status").val("")
     $("#modalTambah").modal('show')
     $('#pesan_error_tambah').html("")
@@ -266,9 +264,9 @@
   function tambah() {
     $("#tombolTambah").html('<i class="fas fa-spinner fa-pulse"></i> Memproses..')
     var no_antrian = $("#no_antrian").val()
-    var nama = $("#nama").val()
-    var poli = $("#poli").val()
-    var jenis_pasien = $("#jenis_pasien").val()
+    // var nama = $("#nama").val()
+    // var poli = $("#poli").val()
+    // var jenis_pasien = $("#jenis_pasien").val()
     var status = $("#status").val()
     // if (rule == null) {
     //   rule = 0;
@@ -278,9 +276,9 @@
       method: 'post',
       data: {
         no_antrian: no_antrian,
-        nama: nama,
-        poli: poli,
-        jenis_pasien: jenis_pasien,
+        // nama: nama,
+        // poli: poli,
+        // jenis_pasien: jenis_pasien,
         status: status
       },
       dataType: 'json',
@@ -288,9 +286,9 @@
         if (data == "") {
           
           $("#no_antrian").val("")
-          $("#nama").val("")
-          $("#poli").val("")
-          $("#jenis_pasien").val("")
+          // $("#nama").val("")
+          // $("#poli").val("")
+          // $("#jenis_pasien").val("")
           $("#status").val("")
           $('#pesanErroTambah').html("")
         } else {

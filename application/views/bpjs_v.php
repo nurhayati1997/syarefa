@@ -216,7 +216,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 			function tampilkan(){
 				$("#tempatTabel").html('<i class="fas fa-spinner fa-pulse"></i> Memuat...')
-				var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>No Antirian</th><th>Nama</th><th>Poli</th></tr></thead><tbody>'
+				var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>No Antirian</th></tr></thead><tbody>'
 				$.ajax({
 					type:'POST',
 					url: '<?= base_url() ?>bpjs/tampil',
@@ -227,8 +227,6 @@ License: You must have a valid license purchased only from themeforest(the above
 						baris += '<tr>'
 						// baris += '<td>' + (i + 1) + '</td>'
 						baris += '<td>' + data[i].no_antrian + '</td>'
-						baris += '<td>' + data[i].nama + '</td>'
-						baris += '<td>' + data[i].poli + '</td>'
 						// baris += '<td><div style="cursor:pointer;" title="hapus?" class="badge badge-danger" id="hapus' + data[i].id + '" onClick="tryHapus(' + data[i].id+ ')"><i class="fa fa-times"></i></div>'
 						// baris += ' <div style="cursor:pointer;" title="edit?" class="badge badge-info" id="edit' + data[i].id + '" onClick="tryEdit(' + data[i].id+ ')"><i class="fa fa-edit"></i></div>'
 						baris += '</td></tr>'
