@@ -52,7 +52,7 @@ class bpjs extends CI_Controller
 	
 		public function tampil()
 	{
-		$data_antrian = $this->db_model->ambil_data_belumambilobat('v_obatbelumdiambil_bpjs')->result();
+		$data_antrian = $this->db_model->ambil_data_belumambilobat('v_ambilantrian_bpjs')->result();
 		echo json_encode($data_antrian);
 	}
 }

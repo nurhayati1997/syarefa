@@ -97,13 +97,13 @@ License: You must have a valid license purchased only from themeforest(the above
 								<!--Tabel-->
 								<!--begin::Row-->
 								<div class="row">
-									<div class="col-xl-4">
+									<div class="col-xl-5">
 										<!--begin::Advance Table Widget 1-->
 										<div class="card card-custom card-stretch gutter-b">
 											<!--begin::Header-->
 											<div class="card-header border-0 py-5">
 												<h3 class="card-title align-items-start flex-column">
-													<span class="card-label font-weight-bolder text-center text-dark">Daftar Resep Selesai & Obat Belum diambil <br> "SEGERA MENGAMBIL OBAT KE DEPO"</span>
+													<span class="card-label font-weight-bolder text-center text-dark">Daftar Resep Selesai <br> "SEGERA MENGAMBIL OBAT KE DEPO"</span>
 													<!-- <span class="text-muted mt-3 font-weight-bold font-size-sm">More than 400+ new members</span> -->
 												</h3>
 											</div>
@@ -119,59 +119,25 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 										<!--end::Advance Table Widget 1-->
 									</div>
-									<div class="col-xl-8">
+									<div class="col-xl-7">
 										<div class="row">
                       <!-- ambil antrian -->
-											<div class="col-xl-6">
-                        <!--begin::Engage Widget 9-->
-                        <div class="card card-custom card-stretch gutter-b">
-                          <div class="card-body d-flex p-0">
-                            <div class="flex-grow-1 p-20 pb-20 card-rounded flex-grow-1 bgi-no-repeat" style="background-color: #1B283F; background-position: calc(100% + 0.5rem) bottom; background-size: 50% auto; background-image: url(https://preview.keenthemes.com/metronic/theme/html/demo2/dist/assets/media/svg/humans/custom-10.svg)">
-                              <p class="text-muted pb-5 text-center font-size-h1">No Antrian
-                                <br> Pasien BPJS
-                              </p>
-                              <h1 class="display-1 text-white text-center pb-5 font-weight-bolder"><?php echo $ambil_antrian; ?></h1>
-                              <p class="text-muted pb-5 text-center font-size-h1">Segera Mengambil Obat
-                                <!-- <br> ke Depo Rawat Jalan -->
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <!--end::Engage Widget 9-->
-											</div>
-											<div class="col-xl-6">
-												<!--begin::Tiles Widget 13-->
-												<div class="flex-grow-1 p-12 card-rounded bgi-no-repeat d-flex flex-column justify-content-center align-items-start" style="background-color: #FFF4DE; background-position: right bottom; background-size: auto 45%; background-image: url(https://preview.keenthemes.com/metronic/theme/html/demo2/dist/assets/media/svg/humans/custom-8.svg)">
-													<p class="text-dark-50 my-5 font-size-h2 font-weight-bold">No Antrian Resep disiapkan</p>
-													<h4 class="text-danger  display-4 font-weight-bolder m-0"><?php echo $sedang_dikerjakan; ?></h4>
-													<p class="text-dark-50 my-5 font-size-h3 font-weight-bold">Persiapan Mengambil Obat</p>
-												</div>
-												<!--end::Tiles Widget 13-->
-												<div class="row">
-													<div class="col-xl-6">
-														<!--begin::Tiles Widget 11-->
-                              <div class="card card-custom card-stretch gutter-b">
-                                <div class="card-body d-flex p-0">
-                                  <div class="flex-grow-1 bg-danger p-8 card-rounded flex-grow-1 bgi-no-repeat" style="background-position: calc(100% + 0.5rem) bottom; background-size: auto 45%; background-image: url(https://preview.keenthemes.com/metronic/theme/html/demo2/dist/assets/media/svg/humans/custom-3.svg)">
-                                    <p class="text-inverse-danger text-center font-size-h2 my-6">SISA  Antrian <br> Resep</p>
-                                    <h1 class="text-inverse-danger text-center mt-2 display-4 font-weight-bolder"><?php echo $sisa_resep ?></h1>
-                                  </div>
-                                </div>
-                              </div>
-														<!--end::Tiles Widget 11-->
-													</div>
-													<div class="col-xl-6">
-                            <div class="card card-custom card-stretch gutter-b">
-                              <div class="card-body d-flex p-0 card-rounded">
-                                <div class="flex-grow-1 p-10 card-rounded flex-grow-1 bgi-no-repeat" style="background-color: #663259; background-position: calc(100% + 0.5rem) bottom; background-size: auto 45%; background-image: url(https://preview.keenthemes.com/metronic/theme/html/demo2/dist/assets/media/svg/humans/custom-4.svg)">
-                                  <p class="text-inverse-danger font-size-h2 my-6">TOTAL</p>
-                                  <h1 class="text-inverse-danger mt-2 display-4 font-weight-bolder"><?php echo $total_antrian; ?></h1>
-                                  <p class="text-inverse-danger font-size-h3 my-6">Resep Masuk</p>
-                                </div>
-                              </div>
-                            </div>
+											<div class="col-xl-12">
+												<!--begin::Engage Widget 9-->
+												<div class="card card-custom card-stretch gutter-b">
+												<div class="card-body d-flex p-0">
+													<div class="flex-grow-1 p-20 pb-20 card-rounded flex-grow-1 bgi-no-repeat" style="background-color: #1B283F; background-position: calc(100% + 0.5rem) bottom; background-size: 50% auto; background-image: url(https://preview.keenthemes.com/metronic/theme/html/demo2/dist/assets/media/svg/humans/custom-10.svg)">
+													<p class="text-muted pb-5 text-center font-size-h1">No Antrian
+														<br> Pasien BPJS
+													</p>
+													<h1 class="display-1 text-white text-center pb-5 font-weight-bolder"><?php echo $ambil_antrian; ?></h1>
+													<p class="text-muted pb-5 text-center font-size-h1">Segera Mengambil Obat
+														<!-- <br> ke Depo Rawat Jalan -->
+													</p>
 													</div>
 												</div>
+												</div>
+												<!--end::Engage Widget 9-->
 											</div>
 										</div>
 										<div class="row">
@@ -180,8 +146,8 @@ License: You must have a valid license purchased only from themeforest(the above
                           <div class="card-body rounded p-0 d-flex bg-light">
                             <div class="d-flex flex-column flex-lg-row-auto w-auto w-lg-350px w-xl-450px w-xxl-650px py-10 py-md-14 px-10 px-md-20 pr-lg-0">
                             <!-- <div class="flex-grow-1 p-10 card-rounded flex-grow-1 bgi-no-repeat" style="background-color: #663259; background-position: calc(100% + 0.5rem) bottom; background-size: auto 45%; background-image: url(https://preview.keenthemes.com/metronic/theme/html/demo2/dist/assets/media/svg/humans/custom-4.svg)">   --> 
-                              <div class="font-size-h4 mb-8">Total Resep Selesai & Obat Belum diambil </div>
-                              <h1 class="font-weight-bolder display-4 text-center text-dark mb-0"><?php echo $total_belumdiambil; ?></h1>
+                              <div class="font-size-h4 mb-8 text-center">TOTAL RESEP MASUK</div>
+                              <h1 class="font-weight-bolder display-4 text-center text-dark mb-0"><?php echo $total_antrian; ?></h1>
                             </div>
                             <div class="d-none d-md-flex flex-row-fluid bgi-no-repeat bgi-position-y-center bgi-position-x-left bgi-size-cover" style="background-image: url(https://preview.keenthemes.com/metronic/theme/html/demo2/dist/assets/media/svg/illustrations/copy.svg);"></div>
                           </div>
