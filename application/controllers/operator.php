@@ -43,7 +43,6 @@ class operator extends CI_Controller
 	{
 		$data = [
 			"no_antrian" => $this->input->post("no_antrian", TRUE),
-			"no_rm" => $this->input->post("no_rm", TRUE),
 			"nama" => $this->input->post("nama", TRUE),
 			"poli" => $this->input->post("poli", TRUE),
 			"jenis_pasien" => $this->input->post("jenis_pasien", TRUE),

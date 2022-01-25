@@ -88,15 +88,6 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="ni ni-badge"></i></span>
                                     </div>
-                                    <input class="form-control" name="no_rm" id="no_rm" placeholder="No Rekam Medis" type="text">
-                                  </div>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                  <div class="input-group input-group-merge input-group-alternative">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="ni ni-badge"></i></span>
-                                    </div>
                                     <input class="form-control" name="nama" id="nama" placeholder="Nama" type="text">
                                   </div>
                                 </div>
@@ -130,8 +121,6 @@
                                 <div class="form-group mb-3">
                                 <label class="form-control-label" for="exampleFormControlSelect1">Status Layanan Pasien</label>
                                   <select class="form-control" name="status" id="status">
-                                    <option value="1">Belum Dilayani</option>
-                                    <option value="2">Sedang dilayani</option>
                                     <option value="3">ambil resep</option>
                                     <option value="4">Selesai Sudah Ambil Obat</option>
                                     <option value="5">Selesai Belum Ambil Obat</option>
@@ -166,8 +155,6 @@
                                   <input id="idUser" type="hidden">
                                   <label class="form-control-label" for="exampleFormControlSelect1">Status Layanan Pasien</label>
                                   <select class="form-control" id="editStatus">
-                                    <option value="1">Belum Dilayani</option>
-                                    <option value="2">Sedang dilayani</option>
                                     <option value="3">ambil resep</option>
                                     <option value="4">Selesai Sudah Ambil Obat</option>
                                     <option value="5">Selesai Belum Ambil Obat</option>
@@ -233,7 +220,7 @@
 
   function tampilkan(){
     $("#tempatTabel").html('<i class="fas fa-spinner fa-pulse"></i> Memuat...')
-    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>NO</th><th>Tanggal</th><th>No Antrian</th><th>No RM</th><th>Nama</th><th>Poli</th><th>Jenis Pasien</th><th>Status</th><th>Action</th></tr></thead><tbody>'
+    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>NO</th><th>Tanggal</th><th>No Antrian</th><th>Nama</th><th>Poli</th><th>Jenis Pasien</th><th>Status</th><th>Action</th></tr></thead><tbody>'
       $.ajax({
         type:'POST',
         url: '<?= base_url() ?>operator/tampil',
@@ -245,7 +232,6 @@
             baris += '<td>' + (i + 1) + '</td>'
             baris += '<td>' + data[i].tgl_input + '</td>'
             baris += '<td>' + data[i].no_antrian + '</td>'
-            baris += '<td>' + data[i].no_rm + '</td>'
             baris += '<td>' + data[i].nama + '</td>'
             baris += '<td>' + data[i].poli + '</td>'
             baris += '<td>' + data[i].jenis_pasien + '</td>'
@@ -269,7 +255,6 @@
 
   function tryTambah() {
     $("#no_antrian").val("")
-    $("#no_rm").val("")
     $("#nama").val("")
     $("#poli").val("")
     $("#jenis_pasien").val("")
@@ -281,7 +266,6 @@
   function tambah() {
     $("#tombolTambah").html('<i class="fas fa-spinner fa-pulse"></i> Memproses..')
     var no_antrian = $("#no_antrian").val()
-    var no_rm = $("#no_rm").val()
     var nama = $("#nama").val()
     var poli = $("#poli").val()
     var jenis_pasien = $("#jenis_pasien").val()
@@ -294,7 +278,6 @@
       method: 'post',
       data: {
         no_antrian: no_antrian,
-        no_rm: no_rm,
         nama: nama,
         poli: poli,
         jenis_pasien: jenis_pasien,
@@ -305,7 +288,6 @@
         if (data == "") {
           
           $("#no_antrian").val("")
-          $("#no_rm").val("")
           $("#nama").val("")
           $("#poli").val("")
           $("#jenis_pasien").val("")
